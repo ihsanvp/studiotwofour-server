@@ -45,7 +45,7 @@ class UploadRouteHandler extends Handler
     {
         $file = request()->files('file');
 
-        if (!$file) {
+        if (!$file | empty($file)) {
             response()->json([
                 'message' => 'missing file'
             ], 400);
