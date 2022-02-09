@@ -1,6 +1,12 @@
 {
     "require": {
         "leafs/leaf": "dev-v3.x-dev",
-        "leafs/cors": "^1.0"
+        "leafs/cors": "^1.0",
+        "bolt/pathogen": "^0.6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Studiotwofour\\Server\\": ""
+        }
     }
 }

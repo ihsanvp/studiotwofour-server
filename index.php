@@ -1,18 +1,17 @@
 <?php
 
+namespace Studiotwofour\Server;
+
 require __DIR__ . "/vendor/autoload.php";
 
-// bootstrap
-require __DIR__ . '/bootstrap.php';
+use Studiotwofour\Server\App\Bootstrap;
+use Studiotwofour\Server\Handlers\IndexRouteHandler;
+use Studiotwofour\Server\Handlers\UploadRouteHandler;
 
-// handlers
-require __DIR__ . "/handlers/IndexRouteHandler.php";
-require __DIR__ . "/handlers/UploadRouteHandler.php";
+Bootstrap::run();
 
+app()->get("/", IndexRouteHandler::register());
 
-
-app()->get("/", 'IndexRouteHandler@handle');
-
-app()->post('/upload', 'UploadRouteHandler@handle');
+app()->post('/upload', UploadRouteHandler::register());
 
 app()->run();
