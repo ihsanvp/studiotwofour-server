@@ -6,7 +6,7 @@ class IndexRouteHandler
     {
         return response()->json([
             'name' => 'studiotwofour-server',
-            'api' => '1.0.0'
+            'api' => '2.0.0'
         ]);
     }
 }
