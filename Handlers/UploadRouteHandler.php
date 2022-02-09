@@ -19,7 +19,9 @@ class UploadRouteHandler extends Handler
 
     public function handle()
     {
-        $this->validate();
+        if (!$this->validate()) {
+            return;
+        }
 
         $file = request()->files('file');
         $targetDir = $this->getTargetDir($file['type']);
@@ -39,15 +41,19 @@ class UploadRouteHandler extends Handler
         ]);
     }
 
-    private function validate()
+    private function validate(): bool
     {
         $file = request()->files('file');
 
         if (!$file) {
-            return response()->json([
+            response()->json([
                 'message' => 'missing file'
             ], 400);
+
+            return false;
         }
+
+        return true;
     }
 
     private function ensureDir($path)
